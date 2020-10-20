@@ -1,8 +1,11 @@
+import Carpas.*
+
 class Jarra {
 
 	var property marca
 	var property litros
 	var property cervezaCargada = null
+	var carpaDondeSeSirvio = null
 	
 	method contenidoDeAlcohol(){
 		return self.litros() * cervezaCargada.graduacion()
@@ -10,6 +13,14 @@ class Jarra {
 
 	method cargarCerveza(cerevezaACargar){
 		self.cervezaCargada(cerevezaACargar)
+	}
+	
+	method cargarCarpaDondeSeSirvio(carpa){
+		carpaDondeSeSirvio = carpa.codigoCarpa()
+	}
+	
+	method carpaDondeSeSirvio(){
+		return carpaDondeSeSirvio
 	}
 
 }

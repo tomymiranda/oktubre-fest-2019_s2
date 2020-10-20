@@ -1,109 +1,172 @@
 import marcas.*
 import Personas.*
 import Jarra.*
+import Carpas.*
 
-test "el contido de alcohol de la jarra es de 0.04"{
-	
-	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	
-	const jarrita = new Jarra(marca = "hofbrau",litros = 0.5)
+test "el contido de alcohol de la jarra es de 0.04" {
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita.cargarCerveza(hofbrau)
-
-	assert.equals(0.04,jarrita.contenidoDeAlcohol())
-
+	assert.equals(0.04, jarrita.contenidoDeAlcohol())
 }
 
-test "la persona tomo 0.18 de alcohol"{
-	
-	const hankSkorpio = new Aleman(peso = 60,leGustaLaMusica= true,aguante = 40)
-
-	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau",litros = 0.5)
+test "la persona tomo 0.18 de alcohol" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 40)
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita.cargarCerveza(hofbrau)
-	
-	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau",litros = 0.5)
+	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita2.cargarCerveza(hofbraujo)
-	
-	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "alemania",graduacionDeCerveza = 0.2)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
 	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
 	jarrita3.cargarCerveza(stella)
-	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
-	
-	assert.equals(0.18,hankSkorpio.totalDeAlcoholIngerido())
+	assert.equals(0.18, hankSkorpio.totalDeAlcoholIngerido())
 }
 
-test "la persona no esta ebria"{
-	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica= true, aguante = 40)
-
-	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau",litros = 0.5)
+test "la persona no esta ebria" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 40)
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita.cargarCerveza(hofbrau)
-	
-	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau",litros = 0.5)
+	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita2.cargarCerveza(hofbraujo)
-	
-	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "alemania",graduacionDeCerveza = 0.2)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
 	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
 	jarrita3.cargarCerveza(stella)
-	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
-	
 	assert.notThat(hankSkorpio.estaEbrio())
 }
 
-test "la persona esta ebria"{
-	
-	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica= true, aguante = 10)
-
-	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau",litros = 0.5)
+test "la persona esta ebria" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita.cargarCerveza(hofbrau)
-	
-	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau",litros = 0.5)
+	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita2.cargarCerveza(hofbraujo)
-	
-	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "alemania",graduacionDeCerveza = 0.2)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
 	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
 	jarrita3.cargarCerveza(stella)
-	
+	hankSkorpio.tomarJarraDeCerveza(jarrita)
+	hankSkorpio.tomarJarraDeCerveza(jarrita2)
+	hankSkorpio.tomarJarraDeCerveza(jarrita3)
+	assert.that(hankSkorpio.estaEbrio())
+}
+
+test" a la persona le gusta la stella" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
+	assert.that(hankSkorpio.leGustaLaCerveza_(stella))
+}
+
+test "al checo no le gusta la cerveza negra" {
+	const cech = new Checo(peso = 65, leGustaLaMusica = false, aguante = 12)
+	const quilmes = new MarcaCervezaNegra(gramosDeLupusPorLitro = 3, paisDondeSeFabrico = "argentina")
+	assert.notThat(cech.leGustaLaCerveza_(quilmes))
+}
+
+test "al belga le gusta la cerveza roja" {
+	const hazard = new Belga(peso = 68, leGustaLaMusica = false, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	assert.that(hazard.leGustaLaCerveza_(quilmesRed))
+}
+
+test "el belga quiere entrar a la carpa" {
+	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	assert.that(hazard.quiereEntrarAUnaCarpa(carpita))
+}
+
+test "el belga no quiere entrar porq no le gusta la musica" {
+	const hazard = new Belga(peso = 68, leGustaLaMusica = false, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	assert.notThat(hazard.quiereEntrarAUnaCarpa(carpita))
+}
+
+test "el aleman quiere entrar porq hay 2 personas en la carpa" {
+	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	const lukaku = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	carpita.entrarPersonaAlaCarpa(hazard)
+	carpita.entrarPersonaAlaCarpa(lukaku)
+	assert.that(hankSkorpio.quiereEntrarAUnaCarpa(carpita))
+}
+
+test "el aleman no quiere entrar porq hay 1 persona" {
+	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	carpita.entrarPersonaAlaCarpa(hazard)
+	assert.notThat(hankSkorpio.quiereEntrarAUnaCarpa(carpita))
+}
+
+test " la carpa deja entrar al aleman" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	assert.that(carpita.dejarIngresarA_(hankSkorpio))
+}
+
+test "no deja entrar a aleman porq esta ebrio" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
+	jarrita.cargarCerveza(hofbrau)
+	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
+	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
+	jarrita2.cargarCerveza(hofbraujo)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
+	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
+	jarrita3.cargarCerveza(stella)
+	hankSkorpio.tomarJarraDeCerveza(jarrita)
+	hankSkorpio.tomarJarraDeCerveza(jarrita2)
+	hankSkorpio.tomarJarraDeCerveza(jarrita3)
+
+	assert.notThat(carpita.dejarIngresarA_(hankSkorpio))
+}
+
+test "el aleman es patriota"{
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania")
+	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
+	jarrita.cargarCerveza(hofbrau)
+	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania")
+	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
+	jarrita2.cargarCerveza(hofbraujo)
+	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
+	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
+	jarrita3.cargarCerveza(stella)
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
 	
-	assert.that(hankSkorpio.estaEbrio())
+	assert.that(hankSkorpio.esPatriota())
 }
 
-test" a la persona le gusta la stella"{
+test "al aleman le sirven cerveza en la carpa"{
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed)
 	
-	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica= true, aguante = 10)
-
-	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4,paisDondeSeFabrico = "alemania",graduacionDeCerveza = 0.2)
-
-	assert.that(hankSkorpio.leGustaLaCerveza_(stella))
-}
-
-test "al checo no le gusta la cerveza negra"{
+	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+	carpita.servirCerveza(hankSkorpio, 0.5)
 	
-	const cech = new Checo(peso = 65, leGustaLaMusica = false, aguante = 12 )
-
-	const quilmes = new MarcaCervezaNegra(gramosDeLupusPorLitro = 3,paisDondeSeFabrico="argentina")
-
-	assert.notThat(cech.leGustaLaCerveza_(quilmes))
+	assert.equals(1,hankSkorpio.jarras().size())
 }
 
-test "al belga le gusta la cerveza roja"{
-	
-	const hazard = new Belga(peso = 68, leGustaLaMusica = false, aguante = 10)
 
-	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5,paisDondeSeFabrico="argentina")
-
-	assert.that(hazard.leGustaLaCerveza_(quilmesRed))
-}
