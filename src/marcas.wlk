@@ -2,9 +2,15 @@ class Marca {
 
 	const property gramosDeLupusPorLitro
 	const property paisDondeSeFabrico
+	// se pone 15 para que no me rompa el constructor de los test hasta termine el bonus
+	var property precioPorLitro = 15
 
 	// método abstracto
 	method graduacion()
+	
+	method cambiarPrecio(nuevoPrecio){
+		self.precioPorLitro(nuevoPrecio)
+	}
 
 }
 

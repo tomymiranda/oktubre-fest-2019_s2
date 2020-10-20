@@ -6,6 +6,7 @@ class Jarra {
 	var property litros
 	var property cervezaCargada = null
 	var carpaDondeSeSirvio = null
+	var property precio = null
 	
 	method contenidoDeAlcohol(){
 		return self.litros() * cervezaCargada.graduacion()
@@ -22,5 +23,5 @@ class Jarra {
 	method carpaDondeSeSirvio(){
 		return carpaDondeSeSirvio
 	}
-
+ 
 }
