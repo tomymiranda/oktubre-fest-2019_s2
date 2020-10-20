@@ -23,5 +23,8 @@ class Jarra {
 	method carpaDondeSeSirvio(){
 		return carpaDondeSeSirvio
 	}
- 
+ 	
+ 	method tieneMasCapacidadQueOtraJarra(otraJarra){
+ 		return self.litros() > otraJarra.litros()
+ 	}
 }

@@ -38,7 +38,11 @@ class Persona {
 		return jarras.any({ i => i.carpaDondeSeSirvio().equals(carpa.codigoCarpa()) })
 	}
 
-	/*como seria el metodo estaEntrandoEnElVicio() ??? */
+	// no se si esta bien
+	
+	method estaEntrandoEnElVicio(){
+		return jarras.all({a,b => b.tieneMasCapacidadQueOtraJarra(a)})
+	}
 
 
 	// metodo abstracto
