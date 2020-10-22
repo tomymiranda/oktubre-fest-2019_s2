@@ -1,5 +1,7 @@
 import Jarra.*
 import marcas.*
+import Personas.*
+import objects.*
 
 class Carpa {
 
@@ -32,6 +34,7 @@ class Carpa {
 	method entrarPersonaAlaCarpa(persona) {
 		if (self.puedeEntrar(persona)) {
 			personasDentro.add(persona)
+			
 		} else {
 			self.error("no puede entrar")
 		}
@@ -39,10 +42,12 @@ class Carpa {
 
 	// dice a una persona, por ende se le debe indicar, lo interpreto asi
 	method servirCerveza(persona, capacidadDeJarra) {
-		persona.tomarJarraDeCerveza(new Jarra(marca = self.cervezaQueVende().toString(), litros = capacidadDeJarra))
-		persona.jarras().get(persona.jarras().size() - 1).cargarCerveza(self.cervezaQueVende())
-		persona.jarras().get(persona.jarras().size() - 1).cargarCarpaDondeSeSirvio(self)
-		persona.jarras().get(persona.jarras().size() - 1).precio(self.precioDeVenta() * persona.jarras().get(persona.jarras().size() - 1).litros())
+		if (personasDentro.contains(persona)) {
+			persona.tomarJarraDeCerveza(new Jarra(marca = self.cervezaQueVende().toString(), litros = capacidadDeJarra))
+			persona.jarras().get(persona.jarras().size() - 1).cargarCerveza(self.cervezaQueVende())
+			persona.jarras().get(persona.jarras().size() - 1).cargarCarpaDondeSeSirvio(self)
+			persona.jarras().get(persona.jarras().size() - 1).precio(self.precioDeVenta() * persona.jarras().get(persona.jarras().size() - 1).litros())
+		}
 	}
 
 	method ebriosEmperdinosDentroDeLaCarpa() {
@@ -66,10 +71,9 @@ class Carpa {
 		return cervezaQueVende.precioPorLitro() + recargoParaVenta.recargo(self)
 	}
 
-	method cambiarRecargo(recargo){
+	method cambiarRecargo(recargo) {
 		self.recargoParaVenta(recargo)
 	}
-
 
 }
 

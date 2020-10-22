@@ -22,16 +22,22 @@ class Persona {
 	}
 
 	method esEbrioEmperdino() {
-		return jarras.all({ i => i.litros() >= 1 })
+		return self.estaEbrio() and jarras.all({ i => i.litros() >= 1 })
 	}
 
 	method esPatriota() {
 		return jarras.all({ i => i.cervezaCargada().paisDondeSeFabrico().equals(self.paisDondeProcede()) })
 	}
-
-	// es la manera que se me ocurrio acepto mejoras
 	method esCompatibleCon_(persona) {
-		return jarras.asSet().intersection(persona.jarras().asSet()).size() > jarras.asSet().difference(persona.jarras().asSet()).size()
+		return self.cantidadDeMarcasCompatibleCon_(persona) > self.cantidadDeMarcasDiferentesCon_(persona)
+	}
+	
+	method cantidadDeMarcasCompatibleCon_(persona){
+		return jarras.map({i=>i.marca()}).asSet().intersection(persona.jarras().map({i=>i.marca()}).asSet()).size()
+	}
+	
+	method cantidadDeMarcasDiferentesCon_(persona){
+		return jarras.map({i=>i.marca()}).asSet().difference(persona.jarras().map({i=>i.marca()}).asSet()).size()
 	}
 
 	method seSirvioCervezaEnUnaCarpa_(carpa) {
