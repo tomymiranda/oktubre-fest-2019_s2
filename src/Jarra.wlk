@@ -17,7 +17,7 @@ class Jarra {
 	}
 	
 	method cargarCarpaDondeSeSirvio(carpa){
-		carpaDondeSeSirvio = carpa.codigoCarpa()
+		carpaDondeSeSirvio = carpa.nombre()
 	}
 	
 	method carpaDondeSeSirvio(){

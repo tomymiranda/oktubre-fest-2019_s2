@@ -5,9 +5,13 @@ import objects.*
 
 class Carpa {
 
-	var property limiteDePersonas = 30
+	//suponiendo que se identifican por un nombre
+	const property nombre
+	//el enunciado no dice que debe indicarse por ende deduzco que la cantidad de personas es fijo
+	const property limiteDePersonas = 30
 	var property tieneBandaDeMusicaTradicional
 	const property personasDentro = []
+	//suponiendo que pueden cambiar la cerveza que venden
 	var property cervezaQueVende
 	var property recargoParaVenta
 
@@ -32,12 +36,19 @@ class Carpa {
 	}
 
 	method entrarPersonaAlaCarpa(persona) {
-		if (self.puedeEntrar(persona)) {
+		if (self.puedeEntrar(persona) && not persona.estaDentroDeUnaCarpa()) {
+			persona.entroEnUnaCarpa()
 			personasDentro.add(persona)
-			
+						
 		} else {
 			self.error("no puede entrar")
 		}
+	}
+	
+	method sacarPersonaDeLaCarpa(persona){
+		personasDentro.remove(persona)
+		persona.salioDeUnaCarpa()
+		
 	}
 
 	// dice a una persona, por ende se le debe indicar, lo interpreto asi
@@ -47,6 +58,8 @@ class Carpa {
 			persona.jarras().get(persona.jarras().size() - 1).cargarCerveza(self.cervezaQueVende())
 			persona.jarras().get(persona.jarras().size() - 1).cargarCarpaDondeSeSirvio(self)
 			persona.jarras().get(persona.jarras().size() - 1).precio(self.precioDeVenta() * persona.jarras().get(persona.jarras().size() - 1).litros())
+		}else{
+			self.error("no esta la persona en la carpa")
 		}
 	}
 
@@ -54,17 +67,12 @@ class Carpa {
 		return personasDentro.count({ i => i.esEbrioEmperdino() })
 	}
 
-	method codigoCarpa() {
-		return self.identity()
-	}
-
 	method esHomogenea() {
 		return personasDentro.all({ i => i.paisDondeProcede().equals(personasDentro.first().paisDondeProcede()) })
 	}
 
-	// no se si esta bien
 	method personasAlasNoQueSeLeSivieronCervezaEnEstaCarpa() {
-		return personasDentro.filter({ i => not i.seSirvioCervezaEnUnaCarpa_(self) })
+		return personasDentro.filter({ i => not i.seSirvioAlgunaCervezaEnLaCarpa_(self) })
 	}
 
 	method precioDeVenta() {

@@ -4,6 +4,18 @@ class Persona {
 	const property jarras = []
 	var property leGustaLaMusica
 	var property aguante
+	var property estaDentroDeUnaCarpa = false
+
+	/*
+	 * los metodos salioDeUnaCarpa() y entroEnUnaCarpa() los pongo porque no tiene sentido que una persona este al mismo tiempo en 2 carpas distintas
+	 */
+	method salioDeUnaCarpa() {
+		estaDentroDeUnaCarpa = false
+	}
+
+	method entroEnUnaCarpa() {
+		estaDentroDeUnaCarpa = true
+	}
 
 	method estaEbrio() {
 		return self.totalDeAlcoholIngerido() * self.peso() > self.aguante()
@@ -11,6 +23,10 @@ class Persona {
 
 	method totalDeAlcoholIngerido() {
 		return jarras.sum({ i => i.contenidoDeAlcohol() })
+	}
+
+	method cantidadDeJarraMasGrande() {
+		return jarras.map({ i => i.litros() }).max()
 	}
 
 	method tomarJarraDeCerveza(jarraDeCerveza) {
@@ -26,41 +42,42 @@ class Persona {
 	}
 
 	method esPatriota() {
-		return jarras.all({ i => i.cervezaCargada().paisDondeSeFabrico().equals(self.paisDondeProcede()) })
+		return jarras.all({ i => i.cervezaCargada().paisDondeSeFabrico() == self.paisDondeProcede() })
 	}
+
 	method esCompatibleCon_(persona) {
 		return self.cantidadDeMarcasCompatibleCon_(persona) > self.cantidadDeMarcasDiferentesCon_(persona)
 	}
-	
-	method cantidadDeMarcasCompatibleCon_(persona){
-		return jarras.map({i=>i.marca()}).asSet().intersection(persona.jarras().map({i=>i.marca()}).asSet()).size()
-	}
-	
-	method cantidadDeMarcasDiferentesCon_(persona){
-		return jarras.map({i=>i.marca()}).asSet().difference(persona.jarras().map({i=>i.marca()}).asSet()).size()
+
+	method cantidadDeMarcasCompatibleCon_(persona) {
+		return jarras.map({ i => i.marca() }).asSet().intersection(persona.jarras().map({ i => i.marca() }).asSet()).size()
 	}
 
-	method seSirvioCervezaEnUnaCarpa_(carpa) {
-		return jarras.any({ i => i.carpaDondeSeSirvio().equals(carpa.codigoCarpa()) })
+	method cantidadDeMarcasDiferentesCon_(persona) {
+		return jarras.map({ i => i.marca() }).asSet().difference(persona.jarras().map({ i => i.marca() }).asSet()).size()
 	}
 
-	// no se si esta bien
-	
-	method estaEntrandoEnElVicio(){
-		return jarras.all({a,b => b.tieneMasCapacidadQueOtraJarra(a)})
+	method seSirvioAlgunaCervezaEnLaCarpa_(carpa) {
+		return jarras.any({ i => i.carpaDondeSeSirvio().equals(carpa.nombre()) })
 	}
 
-	method gastoTotalEnCerveza(){
-		return jarras.sum({i=>i.precio()})
+	// no anda
+	method estaEntrandoEnElVicio() {
+		return jarras.all({ i => i.tieneMasCapacidadQueOtraJarra(i + 1) })
 	}
-	
-	method jarraDeCervezaMasCara(){
-		return jarras.max({i=> i.precio()})
+
+	method gastoTotalEnCerveza() {
+		return jarras.sum({ i => i.precio() })
 	}
+
+	method jarraDeCervezaMasCara() {
+		return jarras.max({ i => i.precio() })
+	}
+
 	// metodo abstracto
 	method leGustaLaCerveza_(cerveza)
 
-	// metodo abstracto para no usar el toString() [si usara toString() me devolveria "un/a Belga" en vez de belgica]
+	// metodo abstracto para no usar el toString() [si usara toString() me devolveria "un/a Belga" en vez de belgica], no se si aca se puede sobreescribir
 	method paisDondeProcede()
 
 }

@@ -83,14 +83,14 @@ test "al belga le gusta la cerveza roja" {
 test "el belga quiere entrar a la carpa" {
 	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	assert.that(hazard.quiereEntrarAUnaCarpa(carpita))
 }
 
 test "el belga no quiere entrar porq no le gusta la musica" {
 	const hazard = new Belga(peso = 68, leGustaLaMusica = false, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	assert.notThat(hazard.quiereEntrarAUnaCarpa(carpita))
 }
 
@@ -99,7 +99,7 @@ test "el aleman quiere entrar porq hay 2 personas en la carpa" {
 	const lukaku = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	carpita.entrarPersonaAlaCarpa(hazard)
 	carpita.entrarPersonaAlaCarpa(lukaku)
 	assert.that(hankSkorpio.quiereEntrarAUnaCarpa(carpita))
@@ -109,7 +109,7 @@ test "el aleman no quiere entrar porq hay 1 persona" {
 	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	carpita.entrarPersonaAlaCarpa(hazard)
 	assert.notThat(hankSkorpio.quiereEntrarAUnaCarpa(carpita))
 }
@@ -117,14 +117,15 @@ test "el aleman no quiere entrar porq hay 1 persona" {
 test " la carpa deja entrar al aleman" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	assert.that(carpita.dejarIngresarA_(hankSkorpio))
 }
 
+// los 2 siguientes test son con cerveza con ramdon en marca ya que no se sirven en la carpa
 test "no deja entrar a aleman porq esta ebrio" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
 	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
 	jarrita.cargarCerveza(hofbrau)
@@ -160,18 +161,21 @@ test "el aleman es patriota" {
 test "al aleman le sirven cerveza en la carpa" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	carpita.entrarPersonaAlaCarpa(hankSkorpio)
 	carpita.servirCerveza(hankSkorpio, 0.5)
-	assert.equals(1, hankSkorpio.jarras().size())
+	carpita.servirCerveza(hankSkorpio, 0.5)
+	carpita.servirCerveza(hankSkorpio, 1)
+	assert.equals(3, hankSkorpio.jarras().size())
 	assert.equals(0.5, hankSkorpio.jarras().first().litros())
+	assert.equals(1, hankSkorpio.cantidadDeJarraMasGrande())
 }
 
 test"el aleman y el belga son compatibles comprando en una misma carap" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	carpita.entrarPersonaAlaCarpa(hankSkorpio)
 	carpita.entrarPersonaAlaCarpa(hazard)
 	carpita.servirCerveza(hankSkorpio, 0.5)
@@ -180,14 +184,80 @@ test"el aleman y el belga son compatibles comprando en una misma carap" {
 	carpita.servirCerveza(hazard, 0.5)
 	assert.that(hankSkorpio.esCompatibleCon_(hazard))
 }
-test "en la carpa no son todos son alemanes"{
+
+test "en la carpa no son todos son alemanes" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
-	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	carpita.entrarPersonaAlaCarpa(hankSkorpio)
 	carpita.entrarPersonaAlaCarpa(hazard)
-	
 	assert.notThat(carpita.esHomogenea())
 }
 
+test "el aleman no es patriota" {
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+	carpita.servirCerveza(hankSkorpio, 0.5)
+	carpita.servirCerveza(hankSkorpio, 0.5)
+	assert.notThat(hankSkorpio.esPatriota())
+}
+
+test "al le sirvieron cerveza en 2 carpas distinas" {
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpincho = new Carpa(nombre = "leeds",tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+	carpita.servirCerveza(hankSkorpio, 0.5)
+	carpita.sacarPersonaDeLaCarpa(hankSkorpio)
+	
+	carpincho.entrarPersonaAlaCarpa(hankSkorpio)
+	carpincho.servirCerveza(hankSkorpio, 0.5)
+	
+
+	assert.equals(["yupanqui","leeds"],hankSkorpio.jarras().map({i=>i. carpaDondeSeSirvio()}))
+}
+
+test "a hankSkorpio le no le sivieron cerveza en la carpa munich"{
+	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+	const carpincho = new Carpa(nombre = "munich",tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+
+
+	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+	const hazard = new Belga(peso = 68, leGustaLaMusica = true, aguante = 10)
+	
+	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+	carpita.servirCerveza(hankSkorpio, 0.5)
+	carpita.sacarPersonaDeLaCarpa(hankSkorpio)
+	
+	carpita.entrarPersonaAlaCarpa(hazard)
+	carpita.servirCerveza(hazard, 0.5)
+	carpita.sacarPersonaDeLaCarpa(hazard)
+	
+	carpincho.entrarPersonaAlaCarpa(hankSkorpio)
+	carpincho.entrarPersonaAlaCarpa(hazard)
+	carpincho.servirCerveza(hazard, 0.5)
+	
+	assert.equals([hankSkorpio],carpincho.personasAlasNoQueSeLeSivieronCervezaEnEstaCarpa())
+
+}
+/* 
+ *  
+ * test "hankSkorpio esta entrando en el vicio"{
+ * 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+ * 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+ * 	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
+ * 	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+ * 	carpita.servirCerveza(hankSkorpio, 0.5)
+ * 	carpita.servirCerveza(hankSkorpio, 0.75)
+ * 	carpita.servirCerveza(hankSkorpio, 1)
+ * 	
+ * 	assert.that(hankSkorpio.estaEntrandoEnElVicio())
+ * }
+ */
