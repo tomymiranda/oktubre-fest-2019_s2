@@ -18,7 +18,7 @@ class Persona {
 	}
 
 	method quiereEntrarAUnaCarpa(carpa) {
-		return self.leGustaLaCerveza_(carpa.cervezaQueVende()) && self.leGustaLaMusica().equals(carpa.tieneBandaDeMusicaTradicional())
+		return self.leGustaLaCerveza_(carpa.cervezaQueVende()) && self.leGustaLaMusica() == carpa.tieneBandaDeMusicaTradicional()
 	}
 
 	method esEbrioEmperdino() {
@@ -50,7 +50,13 @@ class Persona {
 		return jarras.all({a,b => b.tieneMasCapacidadQueOtraJarra(a)})
 	}
 
-
+	method gastoTotalEnCerveza(){
+		return jarras.sum({i=>i.precio()})
+	}
+	
+	method jarraDeCervezaMasCara(){
+		return jarras.max({i=> i.precio()})
+	}
 	// metodo abstracto
 	method leGustaLaCerveza_(cerveza)
 
