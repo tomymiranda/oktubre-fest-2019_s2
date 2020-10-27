@@ -247,17 +247,17 @@ test "a hankSkorpio le no le sivieron cerveza en la carpa munich"{
 	assert.equals([hankSkorpio],carpincho.personasAlasNoQueSeLeSivieronCervezaEnEstaCarpa())
 
 }
-/* 
- *  
- * test "hankSkorpio esta entrando en el vicio"{
- * 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
- * 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
- * 	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
- * 	carpita.entrarPersonaAlaCarpa(hankSkorpio)
- * 	carpita.servirCerveza(hankSkorpio, 0.5)
- * 	carpita.servirCerveza(hankSkorpio, 0.75)
- * 	carpita.servirCerveza(hankSkorpio, 1)
- * 	
- * 	assert.that(hankSkorpio.estaEntrandoEnElVicio())
- * }
- */
+
+   
+  test "hankSkorpio esta entrando en el vicio"{
+  	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
+  	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
+  	const carpita = new Carpa(tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo, nombre = "heinz")
+  	carpita.entrarPersonaAlaCarpa(hankSkorpio)
+  	carpita.servirCerveza(hankSkorpio, 0.5)
+  	carpita.servirCerveza(hankSkorpio, 0.75)
+  	carpita.servirCerveza(hankSkorpio, 1)
+  	
+  	assert.that(hankSkorpio.estaEntrandoEnElVicio())
+  }
+

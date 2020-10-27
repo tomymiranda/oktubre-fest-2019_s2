@@ -61,9 +61,12 @@ class Persona {
 		return jarras.any({ i => i.carpaDondeSeSirvio().equals(carpa.nombre()) })
 	}
 
-	// no anda
 	method estaEntrandoEnElVicio() {
-		return jarras.all({ i => i.tieneMasCapacidadQueOtraJarra(i + 1) })
+		if (jarras.size() <= 1) {
+			return false
+		} else {
+			return (1 .. jarras.size() - 1).all({ i => jarras.get(i).litros() >= jarras.get(i - 1).litros() })
+		}
 	}
 
 	method gastoTotalEnCerveza() {
