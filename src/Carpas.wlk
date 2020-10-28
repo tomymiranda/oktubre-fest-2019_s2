@@ -6,7 +6,7 @@ import objects.*
 class Carpa {
 
 	//suponiendo que se identifican por un nombre
-	const property nombre
+	var property nombre
 	//el enunciado no dice que debe indicarse por ende deduzco que la cantidad de personas es fijo
 	const property limiteDePersonas = 30
 	var property tieneBandaDeMusicaTradicional
@@ -31,12 +31,9 @@ class Carpa {
 		return self.cantidadDePersonasEnLaCarpa() < self.limiteDePersonas() && not persona.estaEbrio()
 	}
 
-	method puedeEntrar(persona) {
-		return persona.quiereEntrarAUnaCarpa(self) && self.dejarIngresarA_(persona)
-	}
 
 	method entrarPersonaAlaCarpa(persona) {
-		if (self.puedeEntrar(persona) && not persona.estaDentroDeUnaCarpa()) {
+		if (persona.puedeEntrar(self) && not persona.estaDentroDeUnaCarpa()) {
 			persona.entroEnUnaCarpa()
 			personasDentro.add(persona)
 						
@@ -51,13 +48,9 @@ class Carpa {
 		
 	}
 
-	// dice a una persona, por ende se le debe indicar, lo interpreto asi
 	method servirCerveza(persona, capacidadDeJarra) {
 		if (personasDentro.contains(persona)) {
-			persona.tomarJarraDeCerveza(new Jarra(marca = self.cervezaQueVende().toString(), litros = capacidadDeJarra))
-			persona.jarras().get(persona.jarras().size() - 1).cargarCerveza(self.cervezaQueVende())
-			persona.jarras().get(persona.jarras().size() - 1).cargarCarpaDondeSeSirvio(self)
-			persona.jarras().get(persona.jarras().size() - 1).precio(self.precioDeVenta() * persona.jarras().get(persona.jarras().size() - 1).litros())
+			persona.tomarJarraDeCerveza(new Jarra(marca = self.cervezaQueVende(), litros = capacidadDeJarra,carpaDondeSeSirvio = self.nombre(), precio =self.precioDeVenta() * capacidadDeJarra ))
 		}else{
 			self.error("no esta la persona en la carpa")
 		}

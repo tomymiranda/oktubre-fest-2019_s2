@@ -5,6 +5,7 @@ class Persona {
 	var property leGustaLaMusica
 	var property aguante
 	var property estaDentroDeUnaCarpa = false
+	var property nacionalidad = ""
 
 	/*
 	 * los metodos salioDeUnaCarpa() y entroEnUnaCarpa() los pongo porque no tiene sentido que una persona este al mismo tiempo en 2 carpas distintas
@@ -36,13 +37,17 @@ class Persona {
 	method quiereEntrarAUnaCarpa(carpa) {
 		return self.leGustaLaCerveza_(carpa.cervezaQueVende()) && self.leGustaLaMusica() == carpa.tieneBandaDeMusicaTradicional()
 	}
+	
+	method puedeEntrar(carpa) {
+		return self.quiereEntrarAUnaCarpa(carpa) && carpa.dejarIngresarA_(self)
+	}
 
 	method esEbrioEmperdino() {
 		return self.estaEbrio() and jarras.all({ i => i.litros() >= 1 })
 	}
 
 	method esPatriota() {
-		return jarras.all({ i => i.cervezaCargada().paisDondeSeFabrico() == self.paisDondeProcede() })
+		return jarras.all({ i => i.marca().paisDondeSeFabrico() == self.paisDondeProcede() })
 	}
 
 	method esCompatibleCon_(persona) {
@@ -77,11 +82,12 @@ class Persona {
 		return jarras.max({ i => i.precio() })
 	}
 
-	// metodo abstracto
-	method leGustaLaCerveza_(cerveza)
+	
+	method leGustaLaCerveza_(cerveza){
+		return true
+	}
 
-	// metodo abstracto para no usar el toString() [si usara toString() me devolveria "un/a Belga" en vez de belgica], no se si aca se puede sobreescribir
-	method paisDondeProcede()
+	method paisDondeProcede(){return ""}
 
 }
 
@@ -99,9 +105,6 @@ class Belga inherits Persona {
 
 class Aleman inherits Persona {
 
-	override method leGustaLaCerveza_(cerveza) {
-		return true
-	}
 
 	override method quiereEntrarAUnaCarpa(carpa) {
 		return super(carpa) && carpa.cantidadDePersonasEnLaCarpa() % 2 == 0

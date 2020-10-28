@@ -6,22 +6,22 @@ import objects.*
 
 test "el contido de alcohol de la jarra es de 0.04" {
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+	
 	assert.equals(0.04, jarrita.contenidoDeAlcohol())
 }
 
 test "la persona tomo 0.18 de alcohol" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 40)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+	
 	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita2.cargarCerveza(hofbraujo)
+	const jarrita2 = new Jarra(marca = hofbraujo, litros = 0.5)
+	
 	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
-	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
-	jarrita3.cargarCerveza(stella)
+	const jarrita3 = new Jarra(marca = stella, litros = 0.5)
+	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
@@ -31,14 +31,14 @@ test "la persona tomo 0.18 de alcohol" {
 test "la persona no esta ebria" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 40)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+
 	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita2.cargarCerveza(hofbraujo)
+	const jarrita2 = new Jarra(marca = hofbraujo, litros = 0.5)
+
 	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
-	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
-	jarrita3.cargarCerveza(stella)
+	const jarrita3 = new Jarra(marca = stella, litros = 0.5)
+	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
@@ -48,14 +48,14 @@ test "la persona no esta ebria" {
 test "la persona esta ebria" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+	
 	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita2.cargarCerveza(hofbraujo)
+	const jarrita2 = new Jarra(marca = hofbraujo, litros = 0.5)
+	
 	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
-	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
-	jarrita3.cargarCerveza(stella)
+	const jarrita3 = new Jarra(marca = stella, litros = 0.5)
+	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
@@ -127,14 +127,14 @@ test "no deja entrar a aleman porq esta ebrio" {
 	const quilmesRed = new MarcaCervezaRoja(gramosDeLupusPorLitro = 5, paisDondeSeFabrico = "argentina")
 	const carpita = new Carpa(nombre = "yupanqui", tieneBandaDeMusicaTradicional = true, cervezaQueVende = quilmesRed, recargoParaVenta = recargoFijo)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+	
 	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "belgica")
-	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita2.cargarCerveza(hofbraujo)
+	const jarrita2 = new Jarra(marca = hofbraujo, litros = 0.5)
+	
 	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
-	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
-	jarrita3.cargarCerveza(stella)
+	const jarrita3 = new Jarra(marca = stella, litros = 0.5)
+	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)
@@ -144,14 +144,14 @@ test "no deja entrar a aleman porq esta ebrio" {
 test "el aleman es patriota" {
 	const hankSkorpio = new Aleman(peso = 60, leGustaLaMusica = true, aguante = 10)
 	const hofbrau = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania")
-	const jarrita = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita.cargarCerveza(hofbrau)
+	const jarrita = new Jarra(marca = hofbrau, litros = 0.5)
+	
 	const hofbraujo = new MarcaCervezaRoja(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania")
-	const jarrita2 = new Jarra(marca = "hofbrau", litros = 0.5)
-	jarrita2.cargarCerveza(hofbraujo)
+	const jarrita2 = new Jarra(marca = hofbraujo, litros = 0.5)
+	
 	const stella = new MarcaCervezaRubia(gramosDeLupusPorLitro = 4, paisDondeSeFabrico = "alemania", graduacionDeCerveza = 0.2)
-	const jarrita3 = new Jarra(marca = "stella", litros = 0.5)
-	jarrita3.cargarCerveza(stella)
+	const jarrita3 = new Jarra(marca = stella, litros = 0.5)
+	
 	hankSkorpio.tomarJarraDeCerveza(jarrita)
 	hankSkorpio.tomarJarraDeCerveza(jarrita2)
 	hankSkorpio.tomarJarraDeCerveza(jarrita3)

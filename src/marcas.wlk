@@ -1,7 +1,7 @@
 class Marca {
 
-	const property gramosDeLupusPorLitro
-	const property paisDondeSeFabrico
+	var property gramosDeLupusPorLitro
+	var property paisDondeSeFabrico
 	// se pone 15 para que no me rompa el constructor de los test hasta termine el bonus
 	var property precioPorLitro = 15
 
