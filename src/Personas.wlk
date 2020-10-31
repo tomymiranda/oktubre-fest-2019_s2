@@ -107,7 +107,7 @@ class Aleman inherits Persona {
 
 
 	override method quiereEntrarAUnaCarpa(carpa) {
-		return super(carpa) && carpa.cantidadDePersonasEnLaCarpa() % 2 == 0
+		return super(carpa) && carpa.cantidadDePersonasEnLaCarpa().even()
 	}
 
 	override method paisDondeProcede() {
